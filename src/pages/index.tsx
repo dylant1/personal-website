@@ -6,7 +6,7 @@ import { Header } from "../lib/header/header";
 import { Helmet } from "react-helmet";
 
 interface Props {
-  filled: any;
+  filled: boolean;
   children: string;
   href: string;
 }
@@ -22,16 +22,26 @@ const Description = styled.div`
   font-size: 20px;
   color: #58595b;
   margin-bottom: 1em;
+  @media (max-width: 900px) {
+    font-size: 15px;
+  }
+  @media (max-width: 650px) {
+    font-size: 15px;
+    width: 450px;
+  }
+  @media (max-width: 500px) {
+    font-size: 15px;
+    width: 350px;
+  }
+  @media (max-width: 400px) {
+    font-size: 15px;
+    width: 300px;
+  }
 `;
 
 const Orange = styled.span`
   color: #ff8200;
   font-weight: bold;
-`;
-
-const Logo = styled.img`
-  width: 1.2em;
-  margin 0 .5em;
 `;
 
 const LinkWrapper = styled.div`
@@ -56,6 +66,18 @@ const Link = styled.a<Props>`
     box-shadow: ${(props) =>
       props.filled ? " rgba(0, 0, 0, 0.24) 0px 3px 8px;" : "none"};
   }
+  @media (max-width: 900px) {
+    font-size: 15px;
+  }
+  @media (max-width: 650px) {
+    font-size: 12px;
+  }
+  @media (max-width: 500px) {
+    font-size: 12px;
+  }
+  @media (max-width: 400px) {
+    font-size: 12px;
+  }
 `;
 
 const IndexPage = () => {
@@ -75,9 +97,9 @@ const IndexPage = () => {
       <Header />
       <Hero>
         <Description>
-          <span>
+          <b>
             Hey, I'm <Orange>Dylan!</Orange>
-          </span>
+          </b>
           <div
             style={{
               display: "flex",
@@ -92,7 +114,7 @@ const IndexPage = () => {
         </Description>
         <LinkWrapper>
           <Link
-            href={"http://localhost:8000/dylan_toth_resume.pdf"}
+            href={"https://dylantoth.dev/dylan_toth_resume.pdf"}
             filled={true}
             target="_blank"
           >

@@ -31,37 +31,72 @@ const Link = styled.a`
   display: flex;
 `;
 export const Header = () => {
+  const [hovered, setHovered] = React.useState("none");
+
   return (
     <HeaderWrapper>
       <LinksWrapper>
         <LinkBox>
-          <Link href="https://github.com/dylant1" rel="noopener noreferrer">
-            <GithubIcon fill="#58595B" />
+          <Link
+            href="https://github.com/dylant1"
+            rel="noopener noreferrer"
+            onMouseEnter={() => {
+              setHovered("github");
+            }}
+            onMouseLeave={() => {
+              setHovered("none");
+            }}
+            target="_blank"
+          >
+            <GithubIcon fill={hovered === "github" ? "#FF8200" : "#58595B"} />
           </Link>
         </LinkBox>
         <LinkBox>
           <Link
             href="https://www.linkedin.com/in/dylantoth1"
-            target={"_blank"}
+            target="_blank"
             rel="noopener noreferrer"
+            onMouseEnter={() => {
+              setHovered("linkedin");
+            }}
+            onMouseLeave={() => {
+              setHovered("none");
+            }}
           >
-            <LinkedinIcon fill="#58595B" />
+            <LinkedinIcon
+              fill={hovered === "linkedin" ? "#FF8200" : "#58595B"}
+            />
           </Link>
         </LinkBox>
         <LinkBox>
           <Link
             href="https://www.instagram.com/dylant223/?hl=en"
             rel="noopener noreferrer"
+            onMouseEnter={() => {
+              setHovered("instagram");
+            }}
+            onMouseLeave={() => {
+              setHovered("none");
+            }}
+            target="_blank"
           >
-            <InstagramIcon fill="#58595B" />
+            <InstagramIcon
+              fill={hovered === "instagram" ? "#FF8200" : "#58595B"}
+            />
           </Link>
         </LinkBox>
         <LinkBox>
           <Link
             href="mailto: dylan.toth653@gmail.com"
             rel="noopener noreferrer"
+            onMouseEnter={() => {
+              setHovered("mail");
+            }}
+            onMouseLeave={() => {
+              setHovered("none");
+            }}
           >
-            <MailIcon fill="#58595B" />
+            <MailIcon fill={hovered === "mail" ? "#FF8200" : "#58595B"} />
           </Link>
         </LinkBox>
       </LinksWrapper>
