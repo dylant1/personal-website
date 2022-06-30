@@ -83,13 +83,13 @@ const Link = styled.a<Props>`
 
 const IndexPage = () => {
   let currTheme;
-  if (window) {
+  if (typeof window !== "undefined") {
     currTheme = localStorage.getItem("theme");
   }
   const [theme, setTheme] = React.useState(currTheme || "light");
 
   React.useEffect(() => {
-    if (window) {
+    if (typeof window !== "undefined") {
       localStorage.setItem("theme", theme);
     }
   }, [theme]);
