@@ -46,7 +46,7 @@ const Orange = styled.span`
 const LinkWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  margin-bottom: calc(5vh + 5px);
+  margin-bottom: calc(5vh + 25px);
 `;
 
 const Link = styled.a<Props>`
