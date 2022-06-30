@@ -14,7 +14,7 @@ interface IContext {
   theme: string;
 }
 const Hero = styled.div`
-  height: 95vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,7 +48,7 @@ const Orange = styled.span`
 const LinkWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  margin-bottom: 5vh;
+  margin-bottom: calc(5vh + 5px);
 `;
 
 const Link = styled.a<Props>`

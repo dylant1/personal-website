@@ -13,6 +13,7 @@ const HeaderWrapper = styled.nav`
   justify-content: space-between;
   height: 5vh;
   align-items: center;
+  margin-top: 5px;
 `;
 const LinkBox = styled.div`
   margin: 0 0.5em;
