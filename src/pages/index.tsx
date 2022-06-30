@@ -1,16 +1,18 @@
 import * as React from "react";
 import styled from "styled-components";
-import utk from "../images/utk.png";
-import GlobalStyle from "../globalStyles";
 import { Header } from "../lib/header/header";
 import { Helmet } from "react-helmet";
-
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "../globalStyles";
+import { lightTheme, darkTheme } from "../Themes";
 interface Props {
   filled: boolean;
   children: string;
   href: string;
 }
-
+interface IContext {
+  theme: string;
+}
 const Hero = styled.div`
   height: 95vh;
   display: flex;
@@ -20,7 +22,6 @@ const Hero = styled.div`
 `;
 const Description = styled.div`
   font-size: 20px;
-  color: #58595b;
   margin-bottom: 1em;
   @media (max-width: 900px) {
     font-size: 15px;
@@ -54,13 +55,13 @@ const Link = styled.a<Props>`
   text-decoration: none;
 
   background-color: ${(props) => (props.filled ? "#FF8200" : "none")};
-  color: black;
   box-shadow: ${(props) =>
     props.filled ? " rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;" : "none"};
   padding: 0.5em 1.2em;
   margin: 0 1.5em;
   border-radius: 25px;
   cursor: pointer;
+  color: inherit;
   &:hover {
     text-decoration: ${(props) => (props.filled ? "none" : "underline")};
     box-shadow: ${(props) =>
@@ -81,55 +82,73 @@ const Link = styled.a<Props>`
 `;
 
 const IndexPage = () => {
+  const [theme, setTheme] = React.useState(
+    localStorage.getItem("theme") || "light"
+  );
+
+  React.useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+  const themeToggler = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
+  function handleChange(newValue: any) {
+    setTheme(newValue);
+  }
+  const toggleDarkMode = (theme: any) => {
+    setTheme(theme);
+  };
   return (
     <main>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Dylan Toth</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        ></link>
-      </Helmet>
-      <GlobalStyle />
-      <Header />
-      <Hero>
-        <Description>
-          <b>
-            Hey, I'm <Orange>Dylan!</Orange>
-          </b>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <span>
-              Currently a computer science major at the
-              <Orange> University of Tennesee, Knoxville</Orange>
-            </span>
-          </div>
-        </Description>
-        <LinkWrapper>
-          <Link
-            href={"https://dylantoth.dev/dylan_toth_resume.pdf"}
-            filled={true}
-            target="_blank"
-          >
-            View Resume
-          </Link>
-          <Link
-            href="https://github.com/dylant1"
-            filled={false}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Projects
-          </Link>
-        </LinkWrapper>
-      </Hero>
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Dylan Toth</title>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+            rel="stylesheet"
+          ></link>
+        </Helmet>
+        <GlobalStyle />
+        <Header themeCallback={toggleDarkMode} />
+        <Hero>
+          <Description>
+            <b>
+              Hey, I'm <Orange>Dylan!</Orange>
+            </b>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <span>
+                Currently a computer science major at the
+                <Orange> University of Tennesee, Knoxville</Orange>
+              </span>
+            </div>
+          </Description>
+          <LinkWrapper>
+            <Link
+              href={"https://dylantoth.dev/dylan_toth_resume.pdf"}
+              filled={true}
+              target="_blank"
+            >
+              View Resume
+            </Link>
+            <Link
+              href="https://github.com/dylant1"
+              filled={false}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Projects
+            </Link>
+          </LinkWrapper>
+        </Hero>{" "}
+      </ThemeProvider>
     </main>
   );
 };
