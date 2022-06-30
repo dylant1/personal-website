@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 import utk from "../images/utk.png";
 import GlobalStyle from "../globalStyles";
+import { Header } from "../lib/header/header";
+import { Helmet } from "react-helmet";
 
 interface Props {
   filled: any;
@@ -10,7 +12,7 @@ interface Props {
 }
 
 const Hero = styled.div`
-  height: 100vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,6 +37,7 @@ const Logo = styled.img`
 const LinkWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  margin-bottom: 5vh;
 `;
 
 const Link = styled.a<Props>`
@@ -58,12 +61,21 @@ const Link = styled.a<Props>`
 const IndexPage = () => {
   return (
     <main>
-      <title>Home Page</title>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Dylan Toth</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+          rel="stylesheet"
+        ></link>
+      </Helmet>
       <GlobalStyle />
+      <Header />
       <Hero>
         <Description>
           <span>
-            {" "}
             Hey, I'm <Orange>Dylan!</Orange>
           </span>
           <div
@@ -72,15 +84,19 @@ const IndexPage = () => {
               alignItems: "center",
             }}
           >
-            <span> Currently pursuing a computer science degree at </span>
             <span>
-              <Logo src={utk} alt="UTK" />
+              Currently a computer science major at the
+              <Orange> University of Tennesee, Knoxville</Orange>
             </span>
           </div>
         </Description>
         <LinkWrapper>
-          <Link href="" filled={true} target="_blank" rel="noopener noreferrer">
-            Resume
+          <Link
+            href={"http://localhost:8000/dylan_toth_resume.pdf"}
+            filled={true}
+            target="_blank"
+          >
+            View Resume
           </Link>
           <Link
             href="https://github.com/dylant1"
