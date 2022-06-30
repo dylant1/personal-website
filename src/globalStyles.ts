@@ -4,7 +4,6 @@ const GlobalStyle = createGlobalStyle<any>`
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    touch-action: none;
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
   }
