@@ -35,22 +35,32 @@ export const Header = () => {
     <HeaderWrapper>
       <LinksWrapper>
         <LinkBox>
-          <Link href="https://github.com/dylant1">
+          <Link href="https://github.com/dylant1" rel="noopener noreferrer">
             <GithubIcon fill="#58595B" />
           </Link>
         </LinkBox>
         <LinkBox>
-          <Link href="https://www.linkedin.com/in/dylantoth1">
+          <Link
+            href="https://www.linkedin.com/in/dylantoth1"
+            target={"_blank"}
+            rel="noopener noreferrer"
+          >
             <LinkedinIcon fill="#58595B" />
           </Link>
         </LinkBox>
         <LinkBox>
-          <Link href="https://www.instagram.com/dylant223/?hl=en">
+          <Link
+            href="https://www.instagram.com/dylant223/?hl=en"
+            rel="noopener noreferrer"
+          >
             <InstagramIcon fill="#58595B" />
           </Link>
         </LinkBox>
         <LinkBox>
-          <Link href="mailto: dylan.toth653@gmail.com">
+          <Link
+            href="mailto: dylan.toth653@gmail.com"
+            rel="noopener noreferrer"
+          >
             <MailIcon fill="#58595B" />
           </Link>
         </LinkBox>
