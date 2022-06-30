@@ -10,9 +10,7 @@ interface Props {
   children: string;
   href: string;
 }
-interface IContext {
-  theme: string;
-}
+
 const Hero = styled.div`
   height: 80vh;
   display: flex;
@@ -87,13 +85,11 @@ const IndexPage = () => {
     currTheme = localStorage.getItem("theme");
   }
   const [theme, setTheme] = React.useState(currTheme || "light");
-
   React.useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem("theme", theme);
     }
   }, [theme]);
-
   const toggleDarkMode = (theme: any) => {
     setTheme(theme);
   };
