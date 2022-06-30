@@ -40,7 +40,7 @@ export const Header = () => {
           </Link>
         </LinkBox>
         <LinkBox>
-          <Link href="www.linkedin.com/in/dylantoth1">
+          <Link href="https://www.linkedin.com/in/dylantoth1">
             <LinkedinIcon fill="#58595B" />
           </Link>
         </LinkBox>
