@@ -61,7 +61,7 @@ const Link = styled.a<Props>`
   margin: 0 1.5em;
   border-radius: 25px;
   cursor: pointer;
-  color: inherit;
+  color: ${(props) => (props.filled ? "white" : "inherit")};
   &:hover {
     text-decoration: ${(props) => (props.filled ? "none" : "underline")};
     box-shadow: ${(props) =>
@@ -82,19 +82,18 @@ const Link = styled.a<Props>`
 `;
 
 const IndexPage = () => {
-  const [theme, setTheme] = React.useState(
-    localStorage.getItem("theme") || "light"
-  );
+  let currTheme;
+  if (window) {
+    currTheme = localStorage.getItem("theme");
+  }
+  const [theme, setTheme] = React.useState(currTheme || "light");
 
   React.useEffect(() => {
-    localStorage.setItem("theme", theme);
+    if (window) {
+      localStorage.setItem("theme", theme);
+    }
   }, [theme]);
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
-  function handleChange(newValue: any) {
-    setTheme(newValue);
-  }
+
   const toggleDarkMode = (theme: any) => {
     setTheme(theme);
   };

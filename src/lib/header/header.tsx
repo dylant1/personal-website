@@ -37,11 +37,15 @@ const Filler = styled.span`
 `;
 const ToggleWrapper = styled.div``;
 export const Header = ({ themeCallback }: any) => {
-  const [theme, setTheme] = React.useState(
-    localStorage.getItem("theme") || "light"
-  );
+  let currTheme;
+  if (window) {
+    currTheme = localStorage.getItem("theme");
+  }
+  const [theme, setTheme] = React.useState(currTheme || "light");
   React.useEffect(() => {
-    localStorage.setItem("theme", theme);
+    if (window) {
+      localStorage.setItem("theme", theme);
+    }
   }, [theme]);
   const [hovered, setHovered] = React.useState("none");
   const toggleDarkMode = () => {
