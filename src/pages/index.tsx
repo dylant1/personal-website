@@ -99,6 +99,7 @@ const IndexPage = () => {
         <Helmet>
           <meta charSet="utf-8" />
           <title>Dylan Toth</title>
+          <link rel="icon" type="image/x-icon" href="../images/yinYang.png" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
